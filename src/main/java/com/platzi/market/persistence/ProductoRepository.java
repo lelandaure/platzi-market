@@ -13,7 +13,7 @@ import java.util.Optional;
 
 
 /*Orientado al dominio y no a una tabla de la bd*/
-@Repository
+@Repository /*para indicar que se va a comunicar directamente con la base de datos*/
 public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductoCrudRepository productoCrudRepository;
@@ -41,7 +41,8 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public Optional<Product> getProduct(int productId) {
-        return productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto));
+        return productoCrudRepository.findById(productId)
+                .map(producto -> mapper.toProduct(producto));
     }
 
     @Override

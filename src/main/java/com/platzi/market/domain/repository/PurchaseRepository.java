@@ -9,5 +9,7 @@ public interface PurchaseRepository {
     List<Purchase> getAll();
     //con optional lo controlamos en caso de que un clinete no tenga una compra registrada
     Optional<List<Purchase>> getByClient(String clientId);
+    Optional<Purchase> getPurchase(int purchaseId);
     Purchase save(Purchase purchase);
+    void delete(int purchaseId);
 }

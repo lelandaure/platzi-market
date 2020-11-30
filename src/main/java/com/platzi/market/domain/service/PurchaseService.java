@@ -17,11 +17,24 @@ public class PurchaseService {
         return purchaseRepository.getAll();
     }
 
+    public Optional<Purchase> getPurchase(int purchaseId){
+        return purchaseRepository.getPurchase(purchaseId);
+    }
     public Optional<List<Purchase>> getByClient(String clientId){
         return purchaseRepository.getByClient(clientId);
     }
 
     public Purchase save(Purchase purchase){
         return purchaseRepository.save(purchase);
+    }
+
+    public boolean delete (int purchaseId){
+
+        if(getPurchase(purchaseId).isPresent()) {
+            purchaseRepository.delete(purchaseId);
+            return true;
+        }
+        else
+            return false;
     }
 }
